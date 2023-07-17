@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+.todo-app {
+  background-color: #efefef;
+  padding: 1.2em;
+  .new-todo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5%;
+    input{
+      width: 80% !important;
+    }
+  }
+}
+
+.list-group{
+  list-style-type: none;
+}
+
+.list-group-item>li{
+  float:left;
+}
+
+.list-group-item>button{
+   float:right;
+   margin-left: 10px !important;
+}
+
+.list-group-item>*{
+  display: inline-block;
+}
