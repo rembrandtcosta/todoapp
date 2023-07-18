@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+
+.all-container {
+  position: relative;
+}
+
+.login-container {
+  position: absolute;
+  top:50%;
+  transform: translate(0%, 50%);
+  background-color: #efefef;
+  padding: 1.2em;
+}
+
+.container-element {
+  margin-top: 10px;
+}
+
+.list-group{
+  list-style-type: none;
+}
+
+.list-group-item>li{
+  float:left;
+}
+
+.list-group-item>button{
+   float:right;
+   margin-left: 10px !important;
+}
+
+.list-group-item>*{
+  display: inline-block;
+}
