@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Navbar, NavbarBrand } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.scss";
 
@@ -24,7 +24,28 @@ function LoginForm(){
     }
   };
 
+  const signupOnClick = () => {
+    history("/signup");
+  }
+
   return (
+    <React.Fragment>
+   <div>
+      <Navbar
+        className="bg-body-tertiary" 
+        expand="lg"
+      > 
+        <NavbarBrand href="/"><h1>✍To-do</h1></NavbarBrand>
+        <Button 
+          className="logout-button"
+          variant="warning"
+          onClick={signupOnClick}
+        >
+          Signup
+        </Button>
+      </Navbar>
+    </div>
+    <hr />    
     <div className="App container">
       <div className="container-fluid">
         <div className="row all-container">
@@ -44,14 +65,18 @@ function LoginForm(){
             <Form.Group controlId="formBasicPassword">
             <Form.Control
               className="container-element"   
-              type="text"
+              type="password"
               placeholder="Enter password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
             </Form.Group>
 
-            <Button className="container-element" variant="primary" type="submit">
+            <Button 
+              className="container-element" 
+              variant="warning"
+              type="submit"
+            >
               Login
             </Button>
             </Form>
@@ -59,6 +84,8 @@ function LoginForm(){
         </div>
       </div>
     </div>
+
+    </React.Fragment>
   );
 }
 

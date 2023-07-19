@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button, NavbarBrand } from "react-bootstrap";
 import { useState } from "react"; 
 import { useEffect } from "react";
 import axios from "axios";
@@ -7,13 +7,12 @@ import "./App.scss";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "react-bootstrap"; 
 
 export default function UserPage() {
   const history = useNavigate();
   const user = localStorage.getItem("user");
   const [todos, setTodos] = useState([]);
-
-  console.log(todos);
 
   useEffect(() => {
     axios
@@ -62,24 +61,38 @@ export default function UserPage() {
   }
 
   return (
+    <React.Fragment>
+    <div>
+      <Navbar 
+        className="bg-body-tertiary" 
+        expand="lg"
+      > 
+        <NavbarBrand href="/"><h1>✍To-do</h1></NavbarBrand>
+        <Button 
+          className="logout-button"
+          variant="warning"
+          onClick={logoutOnClick}
+        >
+          Logout
+        </Button>
+      </Navbar>
+    </div>
+    <hr />    
     <div className="App container">
       <div className="container-fluid">
         <div className="row">
           <div className="col-xs-12 col-sm-8 col-md-8 offset-md-2">
-            <h1>Todos</h1>
-            <div className="todo-app">
+                      <div className="todo-app">
               <AddTodo handleAddTodo={handleAddTodo} />
               <TodoList 
                 todos={todos}
                 handleDeleteTodo={handleDeleteTodo}
               />
-              <Button onClick={logoutOnClick}>
-                Logout
-              </Button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </React.Fragment>
   );
 }

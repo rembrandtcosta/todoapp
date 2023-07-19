@@ -1,6 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem"
 import { useState, useEffect } from "react";
+import { ListGroup } from "react-bootstrap";
 
 export default function TodoList(props) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -26,7 +27,7 @@ export default function TodoList(props) {
 
   function renderTodos(todos) {
     return (
-      <ul className="list-group">
+      <ListGroup variant="warning">
         {todos.map((todo, i) => (
           <TodoItem 
             key={i}
@@ -40,7 +41,7 @@ export default function TodoList(props) {
             active={i===activeIndex}
           />
         ))}
-      </ul>
+      </ListGroup>
     );
   }
 
@@ -50,7 +51,7 @@ export default function TodoList(props) {
     todos.length > 0 ? (
       renderTodos(todos)
     ) : (
-      <div className="alert alert-primary" role="alert">
+      <div className="alert alert-warning" role="alert">
         No Todos to display
       </div>
     )

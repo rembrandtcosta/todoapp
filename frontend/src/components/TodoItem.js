@@ -1,15 +1,12 @@
-
+import { Button, ListGroupItem } from "react-bootstrap"  
 
 export default function TodoItem(props) {
 
 
   return (
-    <div 
-      className={
-        "list-group-item cursor-pointer " +
-        (props.active ? "active" : "")
-      }
+    <ListGroupItem 
       onClick={props.onClick}
+      variant="warning"
     >
       <li
         className={"cursor-pointer"}
@@ -17,12 +14,15 @@ export default function TodoItem(props) {
       >
         {props.text}
       </li>
-      <button className="btn btn-danger" onClick={props.onDelete}>
+      <Button variant="warning" onClick={props.onDelete}>
         X
-      </button> 
-      <button className="btn btn-info">
+      </Button> 
+      <Button 
+        variant="warning"
+        className="btn btn-info"
+      >
         <span class="glyphicon glyphicon-pencil">Edit</span>
-      </button>
-    </div>
+      </Button>
+    </ListGroupItem>
   )
 }

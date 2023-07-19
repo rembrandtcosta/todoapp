@@ -1,8 +1,18 @@
 .App {
   text-align: center;
 }
+
+h1 {
+  color: #ffc107; 
+}
+
+.logout-button {
+  position: absolute;
+  right: 2%;
+}
+
 .todo-app {
-  background-color: #efefef;
+  background-color: #3f373c;
   padding: 1.2em;
   .new-todo{
     display: flex;

@@ -11,13 +11,11 @@ export default function App() {
 
   return (
     <Router>
-      <Container>
         <Routes>
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/" element={<PrivateRoute Component={UserPage} />} />
         </Routes>
-      </Container>
     </Router>
   );
 }

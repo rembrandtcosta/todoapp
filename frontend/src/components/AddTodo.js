@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Button } from "react-bootstrap"; 
 
 export default function AddTodo(props) {
   const handleSubmit = (e) => {
@@ -24,9 +24,13 @@ export default function AddTodo(props) {
         minLength={1}
         className="form-control"
       />
-      <button className="btn btn-primary" type="submit">
-        Add Todo
-      </button>
+      <Button 
+        className="btn btn-primary" 
+        variant="warning"
+        type="submit"
+       >
+        Add
+      </Button>
     </form>
   );
 }
