@@ -20,6 +20,7 @@ export default function TodoItem(props) {
       <Button 
         variant="warning"
         className="btn btn-info"
+        onClick={props.onEdit}
       >
         <span class="glyphicon glyphicon-pencil">Edit</span>
       </Button>

@@ -68,13 +68,30 @@ const routes = (app) => {
       });
   });
 
+  router.put("/todos", authenticateJWT, (req, res) => {
+    const filter = {
+      _id: req.body.data.todo._id
+    };
+    const todo = req.body.data.todo;
+
+    Todo
+      .updateOne(filter, todo)
+      .then((result) => {
+        serverResponses.sendSuccess(res, messages.SUCCESSFUL, result);
+      })
+      .catch((e) => {
+        serverResponses.sendError(res, messages.BAD_REQUEST, e);
+      });
+  });
+
   router.delete("/todos", authenticateJWT, (req, res) => {
+    console.log(req);
     const todo = {
       _id: req.body._id
     };
 
     Todo
-      .remove(todo)
+      .deleteOne(todo)
       .then((result) => {
         serverResponses.sendSuccess(res, messages.SUCCESSFUL, result);
       })

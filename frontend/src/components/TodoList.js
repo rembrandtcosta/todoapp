@@ -24,6 +24,10 @@ export default function TodoList(props) {
       return aux;
     });
   }
+  
+  function handleEdit(index) {
+    props.handleEditTodo(todos[index]);
+  }
 
   function renderTodos(todos) {
     return (
@@ -36,6 +40,9 @@ export default function TodoList(props) {
             }}
             onDelete={() => {
               handleDelete(i);
+            }}
+            onEdit={() => {
+              handleEdit(i);
             }}
             text={todo.text}
             active={i===activeIndex}

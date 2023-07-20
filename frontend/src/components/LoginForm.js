@@ -30,7 +30,7 @@ function LoginForm(){
 
   return (
     <React.Fragment>
-   <div>
+    <div>
       <Navbar
         className="bg-body-tertiary" 
         expand="lg"
