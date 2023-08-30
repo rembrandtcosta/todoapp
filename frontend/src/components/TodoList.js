@@ -1,28 +1,25 @@
 import React from "react";
 import TodoItem from "./TodoItem"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ListGroup } from "react-bootstrap";
 
 export default function TodoList(props) {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [todos, setTodos] = useState([])
+  const { todos, setTodos } = props;
 
-  useEffect(() => {
-    setTodos(props.todos)
-  }, [props.todos]);
 
   function handleActive(index) {
     setActiveIndex(index);
   }
 
-  function handleDelete(index) {
-    props.handleDeleteTodo(todos[index]._id);
+  async function handleDelete(index) {
+    await props.handleDeleteTodo(todos[index]._id)
     setTodos((prevTodo) => {
-      // caution
-      const aux = [...prevTodo]
-      aux.splice(index, 1);
-      return aux;
-    });
+        // caution
+        const aux = [...prevTodo]
+        aux.splice(index, 1);
+        return [...aux];
+      });
   }
   
   function handleEdit(index) {
@@ -35,11 +32,12 @@ export default function TodoList(props) {
         {todos.map((todo, i) => (
           <TodoItem 
             key={i}
+            i={i}
             onClick={() => {
               handleActive(i);
             }}
-            onDelete={() => {
-              handleDelete(i);
+            onDelete={async () => {
+              await handleDelete(i);
             }}
             onEdit={() => {
               handleEdit(i);
@@ -51,8 +49,6 @@ export default function TodoList(props) {
       </ListGroup>
     );
   }
-
-
 
   return (
     todos.length > 0 ? (

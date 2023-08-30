@@ -48,7 +48,7 @@ function SignupForm(){
     <div className="App container">
       <div className="container-fluid">
         <div className="row all-container">
-          <div className="col-xs-12 col-sm-8 col-md-8 offset-md-2 login-container">
+          <div className="col-xs-12 col-sm-8 col-md-4 offset-md-4 login-container">
             <h1> Signup </h1>
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicUsername">
@@ -64,7 +64,7 @@ function SignupForm(){
               <Form.Group controlId="formBasicPassword">
                 <Form.Control
                   className="container-element"
-                  type="text"
+                  type="password"
                   placeholder="Enter password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
@@ -74,7 +74,7 @@ function SignupForm(){
               <Form.Group controlId="formBasicPasswordConf">
                 <Form.Control
                   className="container-element"
-                  type="text"
+                  type="password"
                   placeholder="Confirm password"
                   value={passwordConf}
                   onChange={(event) => setPasswordConf(event.target.value)}

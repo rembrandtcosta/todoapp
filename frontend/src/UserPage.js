@@ -18,7 +18,11 @@ export default function UserPage() {
   const [editItem, setEditItem] = useState({});
 
   useEffect(() => {
-    axios
+    fetchTodos();
+  }, []);
+
+  const fetchTodos = async () => {
+    await axios
       .get("/api/", 
            { params: { user: user }, 
              headers: { Authorization: localStorage.getItem("token"), } 
@@ -29,10 +33,10 @@ export default function UserPage() {
         );
       })
       .catch((e) => console.log("Error : ", e));
-  }, []);
+  };
 
-  const handleAddTodo = (value) => {
-    axios
+  const handleAddTodo = async (value) => {
+    await axios
       .post("/api/todos/", 
             { text: value,
               user: user}, 
@@ -42,15 +46,13 @@ export default function UserPage() {
             }
         )
       .then(() => {
-        setTodos(
-          [...todos, { text: value }],
-        );
+        fetchTodos();
       })
       .catch((e) => console.log("Error : ", e));
   };
 
-  const handleDeleteTodo = (value) => {
-    axios
+  const handleDeleteTodo = async (value) => {
+    await axios
       .delete("/api/todos", {
             data: { 
               _id: value,
@@ -58,7 +60,7 @@ export default function UserPage() {
             headers: {
                 Authorization: localStorage.getItem("token"), 
             } 
-      }).catch((e) => console.log("Error : ", e));
+      })
   }; 
 
 
@@ -121,6 +123,7 @@ export default function UserPage() {
               }
               <TodoList 
                 todos={todos}
+                setTodos={setTodos}
                 handleDeleteTodo={handleDeleteTodo}
                 handleEditTodo={handleEditTodo}
               />

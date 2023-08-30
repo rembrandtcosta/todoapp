@@ -7,10 +7,11 @@ export default function TodoItem(props) {
     <ListGroupItem 
       onClick={props.onClick}
       variant="warning"
+      key={props.i}
     >
       <li
         className={"cursor-pointer"}
-        key={props.key}
+        key={props.i}
       >
         {props.text}
       </li>
@@ -22,7 +23,7 @@ export default function TodoItem(props) {
         className="btn btn-info"
         onClick={props.onEdit}
       >
-        <span class="glyphicon glyphicon-pencil">Edit</span>
+        <span className="glyphicon glyphicon-pencil">Edit</span>
       </Button>
     </ListGroupItem>
   )
